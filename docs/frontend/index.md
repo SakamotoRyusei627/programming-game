@@ -27,6 +27,7 @@
 ## 現在の前提
 
 - フロントエンド基盤として Next.js App Router を導入しています。
-- 画面実装は `src/app` にあり、トップページでプログラミングゲームを表示します。
-- UI 本体は `src/components/programming-game.tsx`、ゲームロジックは `src/lib/programming-game.ts` にあります。
+- 画面実装は `src/app` にあり、トップページ `/` はゲーム一覧、各ゲーム本体は `/games/[gameId]` で表示します。
+- ゲーム追加の起点は `src/features/games` で、一覧登録は `src/features/games/catalog.ts` に集約します。
+- 現行のプログラミングゲームは互換のため `src/components/programming-game.tsx` と `src/lib/programming-game.ts` を残しつつ、`src/features/games/programming-basics/` から参照しています。
 - 旧静的プロトタイプは `HTML/` に残しています。
