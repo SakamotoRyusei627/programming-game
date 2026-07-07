@@ -1,24 +1,23 @@
 SHELL := /bin/bash
 
-# プロジェクトごとに各コマンドを上書きしてください。
-PRECHECK_CMD ?= printf '%s\n' 'PRECHECK_CMD is not set. Update Makefile for this project.' >&2; exit 1
-UNIT_TEST_CMD ?= printf '%s\n' 'UNIT_TEST_CMD is not set. Update Makefile for this project.' >&2; exit 1
-E2E_TEST_CMD ?= printf '%s\n' 'E2E_TEST_CMD is not set. Update Makefile for this project.' >&2; exit 1
-LINT_CMD ?= printf '%s\n' 'LINT_CMD is not set. Update Makefile for this project.' >&2; exit 1
-FORMAT_CHECK_CMD ?= printf '%s\n' 'FORMAT_CHECK_CMD is not set. Update Makefile for this project.' >&2; exit 1
+PRECHECK_CMD ?= test -f package.json
+UNIT_TEST_CMD ?= npm run test
+E2E_TEST_CMD ?= npm run build
+LINT_CMD ?= npm run lint
+FORMAT_CHECK_CMD ?= npm run typecheck
 
 .PHONY: help check check-pre test test-unit test-e2e lint format-check
 
 help:
 	@printf '%s\n' \
 		'Available targets:' \
-		'  make check        - pre-check + lint + format-check + tests' \
+		'  make check        - pre-check + lint + typecheck + tests + build' \
 		'  make check-pre    - validate current project state before changes' \
-		'  make lint         - run linter' \
-		'  make format-check - verify formatting' \
-		'  make test         - run all tests' \
-		'  make test-unit    - run unit/integration tests' \
-		'  make test-e2e     - run e2e tests'
+		'  make lint         - run ESLint' \
+		'  make format-check - run TypeScript typecheck' \
+		'  make test         - run smoke tests and build verification' \
+		'  make test-unit    - run node:test smoke tests' \
+		'  make test-e2e     - run production build as app-level verification'
 
 check: check-pre lint format-check test
 
