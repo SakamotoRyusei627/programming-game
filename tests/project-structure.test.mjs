@@ -10,6 +10,11 @@ test("Next.js の主要ファイルが存在する", () => {
     "src/app/layout.tsx",
     "src/app/page.tsx",
     "src/app/globals.css",
+    "src/components/programming-game.tsx",
+    "src/lib/programming-game.ts",
+    "public/game/character-front-smile.png",
+    "public/game/character-top.png",
+    "public/game/stone.png",
   ];
 
   for (const file of requiredFiles) {

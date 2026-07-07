@@ -17,7 +17,10 @@
 | 種別 | パス | 説明 |
 |---|---|---|
 | 実装 | `src/app` | Next.js App Router の画面実装 |
-| テスト | `tests/project-structure.test.mjs` | 初期構成のスモークテスト |
+| 実装 | `src/components/programming-game.tsx` | ゲーム UI 本体 |
+| 実装 | `src/lib/programming-game.ts` | 盤面とコマンド実行ロジック |
+| テスト | `tests/project-structure.test.mjs` | 主要ファイル配置のスモークテスト |
+| テスト | `tests/programming-game.test.mjs` | ゲームロジックの単体テスト |
 | 関連docs | [docs/frontend/components.md](../frontend/components.md) | UI責務の整理 |
 
 ## 基本方針
@@ -32,6 +35,7 @@
 - レンダリングヘルパー: 未導入
 - モック方式: 未導入
 - スナップショット利用方針: 未導入
+- ロジック変更時は UI に埋め込まず `src/lib` の純粋関数から先に検証する
 - 変更時はアクセシビリティ観点も確認する
 
 ## よくある変更パターン

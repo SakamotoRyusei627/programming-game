@@ -13,3 +13,5 @@
 
 - Next.js の初期作成直後は `next/font/google` 依存が入る場合があるため、オフライン検証を前提にするなら外部フォント依存を避ける
 - 最低限の検証でも `npm run lint`、`npm run typecheck`、`npm run test`、`npm run build` を `make check` で束ねておくと次の実装に入りやすい
+- 静的 HTML を Next.js へ移植するときは、`src/lib` にゲームロジックを先に分離すると `node:test` で挙動確認しやすい
+- 画像付きの静的プロトタイプ移植では、配信用アセットを `public/` へ寄せて CSS の `url()` 参照を絶対パスに統一すると崩れにくい
