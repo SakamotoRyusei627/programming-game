@@ -17,3 +17,4 @@
 - 画像付きの静的プロトタイプ移植では、配信用アセットを `public/` へ寄せて CSS の `url()` 参照を絶対パスに統一すると崩れにくい
 - 複数ゲーム前提に広げるときは、`src/app/page.tsx` を一覧専用にして、各ゲームは `src/app/games/[gameId]/page.tsx` と `src/features/games/<game-id>/` に寄せると AI が責務を追いやすい
 - 既存コードを一気に移動すると差分が大きくなるため、最初は `src/features/games/<game-id>/` から既存実装を参照するブリッジ構成にすると安全に段階移行できる
+- 反射系ゲームを追加するときは、座標系と当たり判定を `src/features/games/<game-id>/lib` の純粋関数に閉じ込めると `node:test` で Red/Green を作りやすい
