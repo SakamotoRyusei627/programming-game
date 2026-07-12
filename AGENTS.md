@@ -17,4 +17,3 @@
 - 画像付きの静的プロトタイプ移植では、配信用アセットを `public/` へ寄せて CSS の `url()` 参照を絶対パスに統一すると崩れにくい
 - 複数ゲーム前提に広げるときは、`src/app/page.tsx` を一覧専用にして、各ゲームは `src/app/games/[gameId]/page.tsx` と `src/features/games/<game-id>/` に寄せると AI が責務を追いやすい
 - 既存コードを一気に移動すると差分が大きくなるため、最初は `src/features/games/<game-id>/` から既存実装を参照するブリッジ構成にすると安全に段階移行できる
-- 依存追加なしで小規模な 3D 風ゲームを増やすなら、`src/features/games/<game-id>/lib` に純粋関数のロジックを置き、見た目は CSS の perspective と段階的な座標変換で表現すると TDD を維持しやすい
